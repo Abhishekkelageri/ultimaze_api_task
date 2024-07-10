@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+// CRATED MIDDLEWARE GROUP FUNCTION TO STOP REWRITNIG THE NAMESPACE
+// ROUTE FOR REGISTER AND LOGIN 
 Route::middleware('api')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);

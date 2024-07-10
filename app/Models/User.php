@@ -18,6 +18,8 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
+
+// Ensuring the columns
     protected $fillable = [
         'full_name', 'username', 'email_id', 'mobile_number', 'password', 'date_n_time'
     ];
@@ -27,6 +29,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
+// Hide the password field ,remember token field from array representations
     protected $hidden = [
         'password',
         'remember_token',
@@ -37,6 +40,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<string, string>
      */
+// Casting the email_verified_at attribute to a DateTime instance
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -46,6 +50,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return mixed
      */
+// Return the primary key value to be stored in the JWT 
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -56,11 +61,11 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array
      */
+// Return an empty array for custom JWT claims (if any)
     public function getJWTCustomClaims()
     {
         return [];
     }
 }
-
 
 
